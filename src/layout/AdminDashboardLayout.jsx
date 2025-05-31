@@ -7,16 +7,28 @@ const AdminDashboardLayout = () => {
       <aside className="w-64 bg-[#4b257d] text-white p-6 space-y-4">
         <h2 className="text-2xl font-bold mb-6">Organizer Dashboard</h2>
         <nav className="space-y-2">
-          <NavLink to="profile" className="block hover:underline">
+          <NavLink
+            to="/admin-dashboard/profile"
+            className="block hover:underline"
+          >
             Organizer Profile
           </NavLink>
-          <NavLink to="add-camp" className="block hover:underline">
+          <NavLink
+            to="/admin-dashboard/add-camp"
+            className="block hover:underline"
+          >
             Add A Camp
           </NavLink>
-          <NavLink to="manage-camps" className="block hover:underline">
+          <NavLink
+            to="/admin-dashboard/manage-camps"
+            className="block hover:underline"
+          >
             Manage Camps
           </NavLink>
-          <NavLink to="manage-registered" className="block hover:underline">
+          <NavLink
+            to="/admin-dashboard/manage-registered"
+            className="block hover:underline"
+          >
             Manage Registered Camps
           </NavLink>
         </nav>

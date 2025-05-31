@@ -1,11 +1,7 @@
 import React from 'react';
 
 const ParticipantDashboard = () => {
-    return (
-        <div>
-            
-        </div>
-    );
+    return <div>ParticipantDashboard</div>;
 };
 
 export default ParticipantDashboard;

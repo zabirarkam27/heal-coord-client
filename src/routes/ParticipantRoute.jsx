@@ -8,7 +8,11 @@ const ParticipantRoute = ({ children }) => {
   const adminEmail = import.meta.env.VITE_ADMIN_EMAIL;
   const isParticipant = user?.email !== adminEmail;
 
-  return isParticipant ? children : <Navigate to="/" replace />;
+  return isParticipant ? (
+    children
+  ) : (
+    <Navigate to="/" replace />
+  );
 };
 
 export default ParticipantRoute;

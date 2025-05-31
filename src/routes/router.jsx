@@ -10,6 +10,8 @@ import PrivateRoutes from './PrivateRoutes';
 import AdminDashboardLayout from "../layout/AdminDashboardLayout";
 import AdminRoute from "./AdminRoute";
 import ParticipantRoute from "./ParticipantRoute";
+import ParticipantDashboard from "../layout/ParticipantDashboard";
+
 
 const router = createBrowserRouter([
   {
@@ -54,7 +56,7 @@ const router = createBrowserRouter([
         path: "/participant-dashboard",
         element: (
           <ParticipantRoute>
-            <AdminDashboardLayout />
+            <ParticipantDashboard/>
           </ParticipantRoute>
         ),
         children: [],
