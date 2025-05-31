@@ -7,6 +7,9 @@ import JoinUs from './../pages/JoinUs/JoinUs';
 import AvailableCamp from "../pages/AvailableCamp/AvailableCamp";
 import ShowDetails from "../pages/Home/ShowDetails/ShowDetails";
 import PrivateRoutes from './PrivateRoutes';
+import AdminDashboardLayout from "../layout/AdminDashboardLayout";
+import AdminRoute from "./AdminRoute";
+import ParticipantRoute from "./ParticipantRoute";
 
 const router = createBrowserRouter([
   {
@@ -37,6 +40,24 @@ const router = createBrowserRouter([
             <ShowDetails />
           </PrivateRoutes>
         ),
+      },
+      {
+        path: "/admin-dashboard",
+        element: (
+          <AdminRoute>
+            <AdminDashboardLayout />
+          </AdminRoute>
+        ),
+        children: [],
+      },
+      {
+        path: "/participant-dashboard",
+        element: (
+          <ParticipantRoute>
+            <AdminDashboardLayout />
+          </ParticipantRoute>
+        ),
+        children: [],
       },
     ],
   },

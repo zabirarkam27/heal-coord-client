@@ -16,6 +16,16 @@ const Navbar = () => {
       });
   };
 
+  const handleDashboardNavigate = () => {
+    const adminEmail = import.meta.env.VITE_ADMIN_EMAIL;
+
+    if (user?.email === adminEmail) {
+      navigate("/admin-dashboard");
+    } else {
+      navigate("/participant-dashboard");
+    }
+  };
+
   const navItems = (
     <>
       <li>
@@ -24,9 +34,9 @@ const Navbar = () => {
       <li>
         <Link to="/available-camps">Available Camps</Link>
       </li>
-      {!user && (
+      {user && (
         <li>
-          {/* <Link to="/join-us">Join Us</Link> */}
+          <button onClick={handleDashboardNavigate}>Dashboard</button>
         </li>
       )}
     </>
