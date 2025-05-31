@@ -4,6 +4,7 @@ import Home from "../pages/Home/Home";
 import Error from "../pages/Error";
 import Login from "../pages/Login/Login";
 import JoinUs from './../pages/JoinUs/JoinUs';
+import AvailableCamp from "../pages/AvailableCamp/AvailableCamp";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/join-us",
-        element: <JoinUs/>,
+        element: <JoinUs />,
+      },
+      {
+        path: "/available-camps",
+        element: <AvailableCamp />,
       },
     ],
   },
