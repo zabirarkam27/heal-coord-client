@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import PopularItemCard from "./PopularItemCard";
 
 const PopularItems = () => {
   const [camps, setCamps] = useState([]);
@@ -24,40 +25,7 @@ const PopularItems = () => {
       </h2>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {camps.map((camp) => (
-          <div
-            key={camp._id}
-            className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300"
-          >
-            <img
-              src={camp.imageUrl}
-              alt={camp.title}
-              className="w-full h-56 object-cover"
-            />
-            <div className="p-4">
-              <h3 className="text-xl font-semibold mb-2">{camp.title}</h3>
-              <p className="text-gray-600 mb-1">
-                <strong>Date:</strong> {camp.date}
-              </p>
-              <p className="text-gray-600 mb-1">
-                <strong>Time:</strong> {camp.time}
-              </p>
-              <p className="text-gray-600 mb-1">
-                <strong>Location:</strong> {camp.location.address}
-              </p>
-              <p className="text-gray-600 mb-1">
-                <strong>Organizer:</strong> {camp.organizer.name}
-              </p>
-              <p className="text-gray-600 mb-1">
-                <strong>Doctor:</strong> {camp.doctors[0]?.name || "N/A"}
-              </p>
-              <p className="text-gray-600 mb-1">
-                <strong>Camp Fees:</strong> {camp.fees || "Free"}
-              </p>
-              <p className="text-gray-600">
-                <strong>Participants:</strong> {camp.registeredParticipants}
-              </p>
-            </div>
-          </div>
+          <PopularItemCard key={camp._id} camp={camp} />
         ))}
       </div>
       <div className="text-center mt-8">
