@@ -11,6 +11,7 @@ import AdminDashboardLayout from "../layout/AdminDashboardLayout";
 import AdminRoute from "./AdminRoute";
 import ParticipantRoute from "./ParticipantRoute";
 import ParticipantDashboard from "../layout/ParticipantDashboard";
+import AdminProfile from './../pages/Dashboard/AdminDashboard/AdminProfile';
 
 
 const router = createBrowserRouter([
@@ -50,13 +51,18 @@ const router = createBrowserRouter([
             <AdminDashboardLayout />
           </AdminRoute>
         ),
-        children: [],
+        children: [
+          {
+            path: "profile",
+            element: <AdminProfile/>,
+          },
+        ],
       },
       {
         path: "/participant-dashboard",
         element: (
           <ParticipantRoute>
-            <ParticipantDashboard/>
+            <ParticipantDashboard />
           </ParticipantRoute>
         ),
         children: [],
