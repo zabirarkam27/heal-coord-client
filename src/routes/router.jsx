@@ -12,6 +12,7 @@ import AdminRoute from "./AdminRoute";
 import ParticipantRoute from "./ParticipantRoute";
 import ParticipantDashboard from "../layout/ParticipantDashboard";
 import AdminProfile from './../pages/Dashboard/AdminDashboard/AdminProfile';
+import AddCamp from "../pages/Dashboard/AdminDashboard/AddCamp";
 
 
 const router = createBrowserRouter([
@@ -54,7 +55,11 @@ const router = createBrowserRouter([
         children: [
           {
             path: "profile",
-            element: <AdminProfile/>,
+            element: <AdminProfile />,
+          },
+          {
+            path: "add-camp",
+            element: <AddCamp />,
           },
         ],
       },
