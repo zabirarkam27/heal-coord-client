@@ -33,7 +33,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="bg-white shadow-md sticky top-0 z-50">
+    <div className="bg-[#fff]/70 shadow-md sticky top-0 z-50">
       <div className="navbar max-w-[1440px] mx-auto px-4 py-2">
         {/* Small & Medium screen hamburger menu on left */}
         <div className="dropdown dropdown-start lg:hidden">
