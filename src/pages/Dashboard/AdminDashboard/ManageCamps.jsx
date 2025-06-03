@@ -74,7 +74,7 @@ const ManageCamps = () => {
                 </td>
 
                 <td className="space-x-2">
-                  <Link to={`/update-camp/${camp._id}`}>
+                  <Link to={`/admin-dashboard/update-camp/${camp._id}`}>
                     <button className="btn btn-sm btn-outline btn-primary">
                       Update
                     </button>
