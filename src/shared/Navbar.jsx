@@ -109,7 +109,7 @@ const Navbar = () => {
                   <span className="font-semibold">{user.displayName}</span>
                 </li>
                 <li>
-                  <Link to="/dashboard">Dashboard</Link>
+                  <button onClick={handleDashboardNavigate}>Dashboard</button>
                 </li>
                 <li>
                   <button onClick={handleLogOut}>Logout</button>

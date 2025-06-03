@@ -22,9 +22,9 @@ const AvailableCamp = () => {
     .filter((camp) => {
       const keyword = searchTerm.toLowerCase();
       return (
-        camp.title.toLowerCase().includes(keyword) ||
-        camp.description.toLowerCase().includes(keyword) ||
-        camp.date.includes(keyword)
+        camp.title?.toLowerCase().includes(keyword) ||
+        camp.description?.toLowerCase().includes(keyword) ||
+        camp.date?.includes(keyword)
       );
     })
     .sort((a, b) => {
@@ -33,7 +33,7 @@ const AvailableCamp = () => {
       } else if (sortOption === "fees") {
         return (a.fees || 0) - (b.fees || 0);
       } else if (sortOption === "alphabetical") {
-        return a.title.localeCompare(b.title);
+        return (a.title|| "").localeCompare(b.title||"");
       }
       return 0;
     });

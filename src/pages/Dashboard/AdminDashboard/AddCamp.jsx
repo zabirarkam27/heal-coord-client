@@ -12,9 +12,43 @@ const AddCamp = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
+    const dateObj = new Date(data.dateTime);
+    const date = dateObj.toISOString().split("T")[0];
+    const time = dateObj.toLocaleTimeString([], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+
     const campData = {
-      ...data,
-      participantCount: 0, // default
+      title: data.campName,
+      imageUrl: data.image,
+      fees: data.fees,
+      date,
+      time,
+      location: {
+        address: data.location,
+        latitude: parseFloat(data.latitude),
+        longitude: parseFloat(data.longitude),
+      },
+      doctors: [
+        {
+          name: data.doctorName,
+          specialty: data.specialty,
+          contact: data.doctorContact,
+        },
+      ],
+      participantCount: 0,
+      registeredParticipants: 0,
+      description: data.description,
+      status: "upcoming",
+      services: [],
+      sponsors: [],
+      organizer: {
+        name: "N/A",
+        contact: "N/A",
+        email: "N/A",
+        organizerId: "N/A",
+      },
     };
 
     try {
@@ -93,12 +127,14 @@ const AddCamp = () => {
           )}
         </div>
 
-        {/* Location */}
+        {/* Location Address */}
         <div>
-          <label className="block font-medium">Location</label>
+          <label className="block font-medium">Location Address</label>
           <input
             type="text"
-            {...register("location", { required: "Location is required" })}
+            {...register("location", {
+              required: "Location address is required",
+            })}
             className="input input-bordered w-full"
           />
           {errors.location && (
@@ -106,20 +142,70 @@ const AddCamp = () => {
           )}
         </div>
 
-        {/* Healthcare Professional Name */}
+        {/* Latitude */}
         <div>
-          <label className="block font-medium">
-            Healthcare Professional Name
-          </label>
+          <label className="block font-medium">Latitude</label>
           <input
-            type="text"
-            {...register("professionalName", {
-              required: "Professional name is required",
-            })}
+            type="number"
+            step="any"
+            {...register("latitude")}
             className="input input-bordered w-full"
           />
-          {errors.professionalName && (
-            <p className="text-red-500">{errors.professionalName.message}</p>
+          {errors.latitude && (
+            <p className="text-red-500">{errors.latitude.message}</p>
+          )}
+        </div>
+
+        {/* Longitude */}
+        <div>
+          <label className="block font-medium">Longitude</label>
+          <input
+            type="number"
+            step="any"
+            {...register("longitude")}
+            className="input input-bordered w-full"
+          />
+          {errors.longitude && (
+            <p className="text-red-500">{errors.longitude.message}</p>
+          )}
+        </div>
+
+        {/* Doctor Name */}
+        <div>
+          <label className="block font-medium">Doctor Name</label>
+          <input
+            type="text"
+            {...register("doctorName", { required: "Doctor Name is required" })}
+            className="input input-bordered w-full"
+          />
+          {errors.doctorName && (
+            <p className="text-red-500">{errors.doctorName.message}</p>
+          )}
+        </div>
+
+        {/* Doctor Specialty */}
+        <div>
+          <label className="block font-medium">Doctor Specialty</label>
+          <input
+            type="text"
+            {...register("specialty")}
+            className="input input-bordered w-full"
+          />
+          {errors.specialty && (
+            <p className="text-red-500">{errors.specialty.message}</p>
+          )}
+        </div>
+
+        {/* Doctor Contact */}
+        <div>
+          <label className="block font-medium">Doctor Contact</label>
+          <input
+            type="text"
+            {...register("doctorContact")}
+            className="input input-bordered w-full"
+          />
+          {errors.doctorContact && (
+            <p className="text-red-500">{errors.doctorContact.message}</p>
           )}
         </div>
 

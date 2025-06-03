@@ -13,6 +13,7 @@ import ParticipantRoute from "./ParticipantRoute";
 import ParticipantDashboard from "../layout/ParticipantDashboard";
 import AdminProfile from './../pages/Dashboard/AdminDashboard/AdminProfile';
 import AddCamp from "../pages/Dashboard/AdminDashboard/AddCamp";
+import ManageCamps from './../pages/Dashboard/AdminDashboard/ManageCamps';
 
 
 const router = createBrowserRouter([
@@ -59,6 +60,14 @@ const router = createBrowserRouter([
           },
           {
             path: "add-camp",
+            element: <AddCamp />,
+          },
+          {
+            path: "manage-camps",
+            element: <ManageCamps/>,
+          },
+          {
+            path: "manage-registered",
             element: <AddCamp />,
           },
         ],
