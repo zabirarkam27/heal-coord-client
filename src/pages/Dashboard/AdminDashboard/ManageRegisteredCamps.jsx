@@ -81,18 +81,10 @@ const ManageRegisteredCamps = () => {
               <tr key={p._id}>
                 <td>{index + 1}</td>
                 <td>{p.campName}</td>
-                    <td>{p.fees} ৳</td>
+                <td>{p.fees} ৳</td>
                 <td>{p.name}</td>
-                <td>
-                  <span
-                    className={`badge ${
-                      p.paymentStatus === "Paid"
-                        ? "badge-success"
-                        : "badge-warning"
-                    }`}
-                  >
-                    {p.paymentStatus}
-                  </span>
+                <td className="px-4 py-2">
+                  {p.paymentStatus === "Paid" ? "Paid" : "Unpaid"}
                 </td>
                 <td>
                   {p.confirmationStatus === "Pending" ? (
