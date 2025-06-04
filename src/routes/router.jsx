@@ -15,6 +15,7 @@ import AdminProfile from './../pages/Dashboard/AdminDashboard/AdminProfile';
 import AddCamp from "../pages/Dashboard/AdminDashboard/AddCamp";
 import ManageCamps from './../pages/Dashboard/AdminDashboard/ManageCamps';
 import UpdateCamp from "../pages/Dashboard/AdminDashboard/UpdateCamp";
+import ManageRegisteredCamps from "../pages/Dashboard/AdminDashboard/ManageRegisteredCamps";
 
 
 const router = createBrowserRouter([
@@ -74,7 +75,7 @@ const router = createBrowserRouter([
           
           {
             path: "manage-registered",
-            element: <AddCamp />,
+            element: <ManageRegisteredCamps/>
           },
         ],
       },

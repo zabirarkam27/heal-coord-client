@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const UpdateCamp = () => {
   const { id } = useParams();
@@ -11,8 +12,16 @@ const UpdateCamp = () => {
     axios
       .get(`http://localhost:5000/camps/${id}`)
       .then((res) => setCamp(res.data))
-      .catch((err) => console.error("Failed to load camp:", err));
+      .catch((err) => {
+        console.error("Failed to load camp:", err);
+        Swal.fire({
+          icon: "error",
+          title: "Failed to load camp data",
+          text: err.message || "Something went wrong!",
+        });
+      });
   }, [id]);
+  
 
   const handleUpdate = (e) => {
       e.preventDefault();
@@ -51,13 +60,24 @@ const UpdateCamp = () => {
     axios
       .put(`http://localhost:5000/camps/${id}`, updatedCamp)
       .then(() => {
-        alert("Camp updated successfully!");
-        navigate("/admin-dashboard/manage-camps");
+        Swal.fire({
+          icon: "success",
+          title: "Camp updated successfully!",
+          showConfirmButton: false,
+          timer: 1500,
+        }).then(() => {
+          navigate("/admin-dashboard/manage-camps");
+        });
       })
       .catch((err) => {
         console.error("Update failed:", err);
-        alert("Error updating camp.");
+        Swal.fire({
+          icon: "error",
+          title: "Error updating camp.",
+          text: err.message || "Something went wrong!",
+        });
       });
+  
   };
 
   if (!camp) return <div className="p-4">Loading camp data...</div>;
