@@ -12,6 +12,12 @@ const ParticipantDashboard = () => {
             >
               Analytics
             </NavLink>
+            <NavLink
+              to="/participant-dashboard/participant-profile"
+              className="block hover:underline"
+            >
+              Participant Profile
+            </NavLink>
           </nav>
         </aside>
 
