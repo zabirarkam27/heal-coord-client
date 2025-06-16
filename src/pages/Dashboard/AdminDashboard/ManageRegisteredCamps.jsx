@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 
 const ManageRegisteredCamps = () => {
   const [participants, setParticipants] = useState([]);
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/participants")
+    axiosSecure
+      .get("/participants")
       .then((res) => setParticipants(res.data))
       .catch((err) =>
         Swal.fire("Error", "Failed to load registered camps.", "error")
@@ -15,8 +16,8 @@ const ManageRegisteredCamps = () => {
   }, []);
 
   const handleConfirm = (id) => {
-    axios
-      .patch(`http://localhost:5000/participants/${id}`, {
+    axiosSecure
+      .patch(`/participants/${id}`, {
         confirmationStatus: "Confirmed",
       })
       .then(() => {
@@ -43,8 +44,8 @@ const ManageRegisteredCamps = () => {
       confirmButtonText: "Yes, cancel it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios
-          .delete(`http://localhost:5000/participants/${id}`)
+        axiosSecure
+          .delete(`/participants/${id}`)
           .then(() => {
             Swal.fire(
               "Cancelled!",

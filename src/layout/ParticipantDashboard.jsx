@@ -24,6 +24,12 @@ const ParticipantDashboard = () => {
             >
               Registered Camps
             </NavLink>
+            <NavLink
+              to="/participant-dashboard/payment-history"
+              className="block hover:underline"
+            >
+              Payment History
+            </NavLink>
           </nav>
         </aside>
 

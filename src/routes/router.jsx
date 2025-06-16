@@ -19,6 +19,7 @@ import ManageRegisteredCamps from "../pages/Dashboard/AdminDashboard/ManageRegis
 import Analytics from './../pages/Dashboard/ParticipantDashboard/Analytics';
 import ParticipantProfile from './../pages/Dashboard/ParticipantDashboard/ParticipantProfile';
 import RegisteredCamps from "../pages/Dashboard/ParticipantDashboard/RegisteredCamps";
+import PaymentHistory from './../pages/Dashboard/ParticipantDashboard/PaymentHistory';
 
 
 const router = createBrowserRouter([
@@ -101,6 +102,10 @@ const router = createBrowserRouter([
           {
             path: "registered-camps",
             element: <RegisteredCamps />,
+          },
+          {
+            path: "payment-history",
+            element: <PaymentHistory/>,
           },
         ],
       },

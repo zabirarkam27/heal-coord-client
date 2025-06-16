@@ -1,15 +1,17 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const ManageCamps = () => {
   const [camps, setCamps] = useState([]);
   const [loading, setLoading] = useState(true);
+  const axiosSecure = useAxiosSecure();
+
 
   // Fetch all camps
   useEffect(() => {
-    axios
-      .get("http://localhost:5000/camps")
+    axiosSecure
+      .get("/camps")
       .then((res) => {
         setCamps(res.data);
         setLoading(false);
@@ -18,7 +20,7 @@ const ManageCamps = () => {
         console.error("Failed to fetch camps:", err);
         setLoading(false);
       });
-  }, []);
+  }, [axiosSecure]);
 
   // Delete handler
   const handleDelete = async (id) => {
@@ -28,7 +30,7 @@ const ManageCamps = () => {
     if (!confirm) return;
 
     try {
-      await axios.delete(`http://localhost:5000/delete-camp/${id}`);
+      await await axiosSecure.delete(`/delete-camp/${id}`);
       setCamps(camps.filter((camp) => camp._id !== id));
       alert("Camp deleted successfully!");
     } catch (err) {

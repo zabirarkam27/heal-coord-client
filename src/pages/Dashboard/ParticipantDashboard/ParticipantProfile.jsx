@@ -1,18 +1,19 @@
 import { useEffect, useState, useContext } from "react";
-import axios from "axios";
 import { AuthContext } from "../../../context/AuthProvider";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const ParticipantProfile = () => {
   const { user } = useContext(AuthContext);
   const [participant, setParticipant] = useState(null);
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({});
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
     const fetchParticipant = async () => {
       try {
-        const res = await axios.get(
-          `http://localhost:5000/participants/email/${user.email}`
+        const res = await axiosSecure.get(
+          `/participants/email/${user.email}`
         );
         const profile = res.data?.[0];
         if (profile) {
@@ -37,8 +38,8 @@ const ParticipantProfile = () => {
 
   const handleUpdate = async () => {
     try {
-      const res = await axios.patch(
-        `http://localhost:5000/participants/${participant._id}`,
+      const res = await axiosSecure.patch(
+        `/participants/${participant._id}`,
         formData
       );
       if (res.data.modifiedCount || res.data.message) {

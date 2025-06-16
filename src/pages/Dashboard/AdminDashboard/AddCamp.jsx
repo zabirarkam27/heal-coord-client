@@ -1,7 +1,6 @@
-import React from "react";
 import { useForm } from "react-hook-form";
-import axios from "axios";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const AddCamp = () => {
   const {
@@ -10,6 +9,7 @@ const AddCamp = () => {
     reset,
     formState: { errors },
   } = useForm();
+  const axiosSecure = useAxiosSecure();
 
   const onSubmit = async (data) => {
     const dateObj = new Date(data.dateTime);
@@ -52,7 +52,7 @@ const AddCamp = () => {
     };
 
     try {
-      const res = await axios.post("http://localhost:5000/camps", campData);
+      const res = await axiosSecure.post("/camps", campData);
       if (res.data.insertedId) {
         Swal.fire({
           icon: "success",

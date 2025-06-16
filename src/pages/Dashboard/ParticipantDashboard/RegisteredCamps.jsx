@@ -1,24 +1,25 @@
 import { useEffect, useState, useContext } from "react";
-import axios from "axios";
 import { AuthContext } from "../../../context/AuthProvider";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const RegisteredCamps = () => {
   const { user } = useContext(AuthContext);
   const [registeredCamps, setRegisteredCamps] = useState([]);
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
     const fetchRegisteredCamps = async () => {
       try {
-        const res = await axios.get(
-          `http://localhost:5000/participants/email/${user.email}`
+        const res = await axiosSecure.get(
+          `/participants/email/${user.email}`
           );
 
         const participantList = res.data; 
 
         if (participantList.length > 0) {
           const campDataPromises = participantList.map(async (participant) => {
-            const campRes = await axios.get(
-              `http://localhost:5000/camps/${participant.campId}`
+            const campRes = await axiosSecure.get(
+              `/camps/${participant.campId}`
               );
 
             return {
@@ -55,8 +56,8 @@ const RegisteredCamps = () => {
     if (!confirm) return;
 
     try {
-      await axios.delete(
-        `http://localhost:5000/participants/${user.email}/camps/${campId}`
+      await axiosSecure.delete(
+        `/participants/${user.email}/camps/${campId}`
       );
       setRegisteredCamps((prev) =>
         prev.filter((camp) => camp.campId !== campId)

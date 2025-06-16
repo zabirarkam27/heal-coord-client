@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import axios from "axios";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 
 const UpdateCamp = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [camp, setCamp] = useState(null);
+  const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:5000/camps/${id}`)
+    axiosSecure
+      .get(`/camps/${id}`)
       .then((res) => setCamp(res.data))
       .catch((err) => {
         console.error("Failed to load camp:", err);
@@ -20,7 +21,7 @@ const UpdateCamp = () => {
           text: err.message || "Something went wrong!",
         });
       });
-  }, [id]);
+  }, [id, axiosSecure]);
   
 
   const handleUpdate = (e) => {
@@ -57,8 +58,8 @@ const UpdateCamp = () => {
       ],
     };
 
-    axios
-      .put(`http://localhost:5000/camps/${id}`, updatedCamp)
+    axiosSecure
+      .put(`/camps/${id}`, updatedCamp)
       .then(() => {
         Swal.fire({
           icon: "success",

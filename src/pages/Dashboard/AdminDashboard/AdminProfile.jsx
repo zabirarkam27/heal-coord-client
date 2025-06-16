@@ -1,11 +1,12 @@
 import { useContext, useState } from "react";
-import axios from "axios";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../context/AuthProvider";
 
 const AdminProfile = () => {
   const { user } = useContext(AuthContext);
   const [isEditing, setIsEditing] = useState(false);
+  const axiosSecure = useAxiosSecure();
 
   const [formData, setFormData] = useState({
     name: user?.displayName || "",
@@ -25,8 +26,7 @@ const AdminProfile = () => {
   const handleUpdate = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.put(
-        `http://localhost:5000/admins/${encodeURIComponent(formData.email)}`,
+      const res = await axiosSecure.put(`/admins/${encodeURIComponent(formData.email)}`,
         formData
       );
 
