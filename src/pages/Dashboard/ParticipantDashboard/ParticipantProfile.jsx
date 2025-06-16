@@ -54,7 +54,7 @@ const ParticipantProfile = () => {
   if (!participant) {
     return (
       <div className="text-center mt-10">
-        {/* <p className="text-lg font-semibold">Loading profile...</p> */}
+        <p className="text-lg font-semibold">Loading profile...</p>
       </div>
     );
   }

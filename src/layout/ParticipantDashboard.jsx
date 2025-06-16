@@ -18,6 +18,12 @@ const ParticipantDashboard = () => {
             >
               Participant Profile
             </NavLink>
+            <NavLink
+              to="/participant-dashboard/registered-camps"
+              className="block hover:underline"
+            >
+              Registered Camps
+            </NavLink>
           </nav>
         </aside>
 
